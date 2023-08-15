@@ -11,12 +11,13 @@ source:
 
 build:
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   host:
     - pip
+    - setuptools
+    - wheel
     - python
   run:
     - python
@@ -34,8 +35,14 @@ test:
 about:
   home: https://github.com/andosa/treeinterpreter
   summary: Package for interpreting scikit-learn's decision tree and random forest predictions.
+  description: |
+    Package for interpreting scikit-learn's decision tree and random forest predictions. 
+    Allows decomposing each prediction into bias and feature contribution components.
   license: BSD-3-Clause
+  license_family: BSD
   license_file: LICENSE
+  doc_url: https://github.com/andosa/treeinterpreter/blob/master/README.rst
+  dev_url: https://github.com/andosa/treeinterpreter
 
 extra:
   recipe-maintainers:
